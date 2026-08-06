@@ -1,75 +1,31 @@
-# React + TypeScript + Vite
+# StockFlow Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Building StockFlow é um blog técnico desenvolvido para documentar toda a evolução do projeto StockFlow.
 
-Currently, two official plugins are available:
+## ✨️ Objetivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O StockFlow Blog é uma plataforma criada para documentar, de forma transparente e organizada, toda a evolução do projeto StockFlow.
+Cada sprint registra as decisões arquiteturais, modelagens de domínio, implementações, testes, documentação, releases e lições aprendidas durante o desenvolvimento do sistema. O objetivo é compartilhar o processo real de construção de software, servindo como material de estudo, referência técnica e registro da evolução do projeto.
+Mais do que apresentar o resultado final, este blog busca demonstrar o caminho percorrido para transformar uma ideia em um produto de software, valorizando a disciplina de engenharia, a arquitetura e a entrega incremental.
 
-## React Compiler
+## 🚀 Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- Typescript
 
-## Expanding the ESLint configuration
+## 📁 Estrutura
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+...
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📝 Séries
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Building StockFlow
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Links
 
-```
+- 📦 Github Repo: [visitar](https://github.com/mathlun/stockflow-blog)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🌐 Blog Online: [acessar](https://stockflow-blog.vercel.app)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+- 💻 StockFlow: [ver repo](https://github.com/mathlun/stockflow)

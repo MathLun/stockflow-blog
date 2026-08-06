@@ -2,7 +2,7 @@ import type { FC, ReactNode }
 from 'react'
 
 import { Header, Footer }
-from '@/components/layout'
+from '../components/layout'
 
 type Props = {
   children: ReactNode

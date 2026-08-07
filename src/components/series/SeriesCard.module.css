@@ -1,0 +1,81 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  padding: 2rem;
+  margin: 14px 0;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.badge {
+  width: fit-content;
+
+  padding: 0.25rem 0.75rem;
+
+  border-radius: 999px;
+
+  background-color: rgba(124, 58, 237, 0.15);
+  color: var(--color-primary);
+
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.title {
+  color: var(--color-text);
+}
+
+.description {
+  color: var(--color-text-muted);
+
+  line-height: 1.6;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
+.articles {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.button {
+  padding: 0.75rem 1.25rem;
+
+  border-radius: var(--radius-md);
+
+  background-color: var(--color-primary);
+  color: white;
+
+  font-weight: 600;
+
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--color-primary-hover);
+}

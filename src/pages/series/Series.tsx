@@ -9,6 +9,6 @@ export const SeriesPage = () => (
 	     Acompanhe as séries de desenvolvimento, arquitetura e evolução dos projetos.
 	    </p>
 	  </header>
-	  <SeriesCard title="Building StockFlow" description="" href="" articleCount={8} />
+	  <SeriesCard title="Building StockFlow" description="" href="/series/building-stockflow" articleCount={8} />
 	</section>
 );

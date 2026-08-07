@@ -4,11 +4,12 @@ from 'react-router-dom';
 import { MainLayout }
 from '@/layouts';
 
-import { Home }
+import { Home, SeriesPage }
 from '@/pages';
 
 const children = [
-	{ path: '/', element: <Home /> }
+	{ path: '/', element: <Home /> },
+	{ path: '/series', element: <SeriesPage /> }
 ];
 
 const routes = [

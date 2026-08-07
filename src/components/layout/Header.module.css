@@ -1,0 +1,13 @@
+.container {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: sticky;
+  padding: 14px 16px;
+}
+
+.brand {
+  font-size: 16pt;
+}

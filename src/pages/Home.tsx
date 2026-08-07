@@ -4,8 +4,7 @@ export const Home = () => (
 
 	  <p>Uma jornada de construção de software, arquitetura, decisões técnicas e evolução de um produção real.</p>
 
-	  <button>
-	    Começar a ler
-	  </button>
+	  <p>Building StockFlow - Documentando a evolução do StockFlow</p>
+
 	</section>
 );

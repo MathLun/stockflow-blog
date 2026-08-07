@@ -1,6 +1,9 @@
 
 export const Footer = () => (
-	<footer>
-	  <p>Building StockFlow - Documentando a evolução do StockFlow</p>
+	<footer className="footer">
+	  <button>
+	    Começar a ler
+	  </button>
+
 	</footer>
 );

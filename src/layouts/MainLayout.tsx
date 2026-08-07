@@ -11,7 +11,7 @@ type Props = {
 export const MainLayout: FC<Props> = (props) => (
 	<>
 	  <Header />
-	  <main>{props.children}</main>
+	  <main className="content">{props.children}</main>
 	  <Footer />
 	</>
 );

@@ -5,6 +5,8 @@ import type { Article } from '@/../types/article';
 
 import { Loading } from '@/components/feedback/Loading';
 
+import { ErrorState } from '@/components/feedback/ErrorState';
+
 import styles from "./SeriesDetails.module.css";
 
 import { GithubClient } from '@/content/github/GithubClient';
@@ -76,9 +78,7 @@ const SeriesDetailsPage = () => {
 	<ul className={styles.list}>
 	  {isLoading && <Loading />}
 
-	  {error && (
-		  <p>{error}</p>
-	  )}
+	  {error && <ErrorState />}
 
 	  {articles.map((article) => (
 		<li key={article.id}>

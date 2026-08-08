@@ -7,6 +7,8 @@ import { Loading } from '@/components/feedback/Loading';
 
 import { ErrorState } from '@/components/feedback/ErrorState';
 
+import { EmptyState } from '@/components/feedback/EmptyState';
+
 import styles from "./SeriesDetails.module.css";
 
 import { GithubClient } from '@/content/github/GithubClient';
@@ -80,7 +82,9 @@ const SeriesDetailsPage = () => {
 
 	  {error && <ErrorState />}
 
-	  {articles.map((article) => (
+	  {!isLoading && !error && articles.length === 0 && <EmptyState title="Nenhum artigo encontrado" message="Esta série ainda não possui artigos publicados." />}
+
+	  {!isLoading && !error && articles.length > 0 && articles.map((article) => (
 		<li key={article.id}>
 		  <Link to={`/articles/${slug}/${article.slug}`}>
 		    {article.title}

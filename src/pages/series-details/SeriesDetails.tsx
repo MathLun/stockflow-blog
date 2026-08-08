@@ -5,12 +5,17 @@ import type { Article } from '@/../types/article';
 
 import styles from "./SeriesDetails.module.css";
 
+import { GithubClient } from '@/content/github/GithubClient';
+
 import { GithubContentProvider } from '@/content/providers/GithubContentProvider';
 
-const contentProvider = new GithubContentProvider();
+const githubClient = new GithubClient();
+const contentProvider = new GithubContentProvider(githubClient);
 
 const SeriesDetailsPage = () => {
   const [articles, setArticles] = useState<Article[]>([]);
+
+  const [error, setError] = useState<string | null>(null);
 
   const { slug } = useParams();
 
@@ -18,8 +23,12 @@ const SeriesDetailsPage = () => {
 	const loadArticles = async () => {
 		if (!slug) return;
 
-		const data = await contentProvider.getArticles(slug);
-		setArticles(data);
+		try {
+			const data = await contentProvider.getArticles(slug);
+			setArticles(data);
+		} catch (error) {
+			setError("Não foi possivel carregar os artigos");
+		}
 	}
 
 	loadArticles();
@@ -54,6 +63,10 @@ const SeriesDetailsPage = () => {
         <h2>Artigos</h2>
 
 	<ul className={styles.list}>
+	  {error && (
+		  <p>{error}</p>
+	  )}
+
 	  {articles.map((article) => (
 		<li key={article.id}>
 		  <Link to={`/articles/${slug}/${article.slug}`}>

@@ -1,6 +1,6 @@
 export const contentConfig = {
   github: {
-    owner: "mathlun",
+    owner: "MathLun",
     repository: "stockflow",
     branch: "main",
   },

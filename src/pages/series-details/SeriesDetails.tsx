@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 
 import type { Article } from '@/../types/article';
 
+import { Loading } from '@/components/feedback/Loading';
+
 import styles from "./SeriesDetails.module.css";
 
 import { GithubClient } from '@/content/github/GithubClient';
@@ -10,6 +12,7 @@ import { GithubClient } from '@/content/github/GithubClient';
 import { GithubContentProvider } from '@/content/providers/GithubContentProvider';
 
 const githubClient = new GithubClient();
+
 const contentProvider = new GithubContentProvider(githubClient);
 
 const SeriesDetailsPage = () => {
@@ -17,17 +20,25 @@ const SeriesDetailsPage = () => {
 
   const [error, setError] = useState<string | null>(null);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const { slug } = useParams();
 
   useEffect(() => {
 	const loadArticles = async () => {
 		if (!slug) return;
 
+		setIsLoading(true);
+
 		try {
+			await new Promise(resolve => setTimeout(resolve, 2000));
+
 			const data = await contentProvider.getArticles(slug);
 			setArticles(data);
 		} catch (error) {
 			setError("Não foi possivel carregar os artigos");
+		} finally {
+			setIsLoading(false);
 		}
 	}
 
@@ -63,6 +74,8 @@ const SeriesDetailsPage = () => {
         <h2>Artigos</h2>
 
 	<ul className={styles.list}>
+	  {isLoading && <Loading />}
+
 	  {error && (
 		  <p>{error}</p>
 	  )}

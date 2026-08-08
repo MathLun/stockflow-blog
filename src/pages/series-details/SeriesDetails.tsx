@@ -1,11 +1,29 @@
+import { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 
-import { articles } from './articles.data';
+import type { Article } from '@/../types/article';
 
 import styles from "./SeriesDetails.module.css";
 
+import { GithubContentProvider } from '@/content/providers/GithubContentProvider';
+
+const contentProvider = new GithubContentProvider();
+
 const SeriesDetailsPage = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+
   const { slug } = useParams();
+
+  useEffect(() => {
+	const loadArticles = async () => {
+		if (!slug) return;
+
+		const data = await contentProvider.getArticles(slug);
+		setArticles(data);
+	}
+
+	loadArticles();
+  }, [slug]);
 
   return (
     <section className={styles.container}>
@@ -38,7 +56,7 @@ const SeriesDetailsPage = () => {
 	<ul className={styles.list}>
 	  {articles.map((article) => (
 		<li key={article.id}>
-		  <Link to={`/articles/building-stockflow/${article.slug}`}>
+		  <Link to={`/articles/${slug}/${article.slug}`}>
 		    {article.title}
 		  </Link>
 		</li>

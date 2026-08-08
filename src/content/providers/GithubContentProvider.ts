@@ -1,6 +1,8 @@
 import type { Article } from "@/../types/article";
 import type { Series } from "@/../types/series";
 
+import type { GithubContent } from "@/content/github/types";
+
 import { contentConfig } from '@/config/content';
 
 import { GithubClient } from '@/content/github/GithubClient';
@@ -23,13 +25,26 @@ class GithubContentProvider implements ContentProvider {
   }
 
   async getArticles(seriesSlug: string): Promise<Article[]> {
-	  const contents = await this.client.getContents(contentConfig.github.owner, contentConfig.github.repository, `docs/blog/${seriesSlug}`);
+	  const contents = await this.getNestedContents(`docs/blog/${seriesSlug}`); 
 
 	  return contents.filter((content: any) => 
 		   content.type === "file" &&
 		   content.name.endsWith(".md") &&
 		   content.name !== "README.md"
 	  ).map(GithubArticleMapper);
+  }
+
+  async getNestedContents(
+	  path: string
+  ): Promise<GithubContent[]> {
+	  const contents = await this.client.getContents(contentConfig.github.owner, contentConfig.github.repository, path);
+
+	  const nestedContents = await Promise.all(contents.filter((content: any) => content.type === "dir").map((directory: any) => this.getNestedContents(directory.path)));
+
+	  return [
+		...contents.filter((content: any) => content.type === "file"),
+		...nestedContents.flat()
+	  ];
   }
 }
 

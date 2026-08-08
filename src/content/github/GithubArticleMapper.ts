@@ -1,11 +1,6 @@
 import type { Article } from '@/../types/article';
 
-interface GithubContent {
-	name: string;
-	path: string;
-	sha: string;
-	type: string;
-}
+import type { GithubContent } from "./types";
 
 const GithubArticleMapper = (
 	content: GithubContent

@@ -15,9 +15,6 @@ import { GithubClient } from '@/content/github/GithubClient';
 
 import { GithubContentProvider } from '@/content/providers/GithubContentProvider';
 
-/* - Growth Hacking */
-import { ProjectCTA } from '@/components/growth/ProjectCTA';
-
 const githubClient = new GithubClient();
 
 const contentProvider = new GithubContentProvider(githubClient);

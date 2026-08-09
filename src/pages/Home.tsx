@@ -1,3 +1,5 @@
+import { ProjectCTA } from '@/components/growth';
+
 export const Home = () => (
 	<section>
 	  <h2>Documentando toda a evolução do StockFlow</h2>
@@ -6,5 +8,7 @@ export const Home = () => (
 
 	  <p>Building StockFlow - Documentando a evolução do StockFlow</p>
 
+	  <ProjectCTA />
 	</section>
+
 );

@@ -1,0 +1,44 @@
+.container {
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+}
+
+.content {
+  max-width: 42rem;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.content h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+}
+
+.content p {
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.action:hover {
+  text-decoration: underline;
+}

@@ -13,9 +13,13 @@ import type { MarkdownBlock } from "@/content/markdown/types";
 
 import { MarkdownArticleParser } from "@/content/markdown/MarkdownArticleParser";
 
+/* - Growth Hacking */
+import { ProjectCTA } from "@/components/growth";
+
 import styles from "./ArticleDetails.module.css";
 
 const githubClient = new GithubClient();
+
 const contentProvider = new GithubContentProvider(githubClient);
 
 const ArticleDetailsPage = () => {
@@ -101,6 +105,8 @@ const ArticleDetailsPage = () => {
   })}
         </div>
       )}
+
+      <ProjectCTA />
     </article>
   );
 };

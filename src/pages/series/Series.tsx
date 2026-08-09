@@ -1,6 +1,8 @@
 import { SeriesCard }
 from '@/components/series';
 
+import { ProjectCTA } from '@/components/growth';
+
 export const SeriesPage = () => (
 	<section>
 	  <header>
@@ -10,5 +12,6 @@ export const SeriesPage = () => (
 	    </p>
 	  </header>
 	  <SeriesCard title="Building StockFlow" description="" href="/series/building-stockflow" articleCount={8} />
+	  <ProjectCTA />
 	</section>
 );

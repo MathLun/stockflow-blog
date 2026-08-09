@@ -3,4 +3,5 @@ export interface GithubContent {
 	path: string;
 	sha: string;
 	type: "file" | "dir";
+	download_url: string | null;
 }

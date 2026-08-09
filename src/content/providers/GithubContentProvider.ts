@@ -34,18 +34,35 @@ class GithubContentProvider implements ContentProvider {
 	  ).map(GithubArticleMapper);
   }
 
+  async getArticle(
+	  seriesSlug,
+	  articleSlug
+  ) {
+	  const articles = await this.getArticles(seriesSlug);
+	  const article = articles.find(article => article.slug === articleSlug);
+
+	  if (!article) {
+		  throw new Error("Article not found");
+	  }	
+	  
+	  const content = await this.client.getFileContent(contentConfig.github.owner, contentConfig.github.repository, article.path);
+
+	  return { article, content };
+  }
+
   async getNestedContents(
 	  path: string
   ): Promise<GithubContent[]> {
 	  const contents = await this.client.getContents(contentConfig.github.owner, contentConfig.github.repository, path);
 
-	  const nestedContents = await Promise.all(contents.filter((content: any) => content.type === "dir").map((directory: any) => this.getNestedContents(directory.path)));
+	  const nestedContents = await Promise.all(contents.filter((content) => content.type === "dir").map((directory) => this.getNestedContents(directory.path)));
 
 	  return [
-		...contents.filter((content: any) => content.type === "file"),
+		...contents.filter((content) => content.type === "file"),
 		...nestedContents.flat()
 	  ];
   }
+
 }
 
 export { GithubContentProvider };

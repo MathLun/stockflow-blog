@@ -3,4 +3,5 @@ export type Article = {
 	title: string;
 	slug: string;
 	path: string;
+	content?: string;
 }

@@ -13,7 +13,7 @@ export function ProjectCTA() {
           e documentando cada etapa do desenvolvimento.
         </p>
 
-        <a href="https://github.com/MathLun/stockflow" className={styles.action}>
+        <a href="/stockflow" className={styles.action}>
           Acompanhar o projeto
           <span aria-hidden="true">→</span>
         </a>

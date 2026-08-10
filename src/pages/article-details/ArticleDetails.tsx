@@ -106,7 +106,7 @@ const ArticleDetailsPage = () => {
         </div>
       )}
 
-      <ProjectCTA />
+      <ProjectCTA source="article" />
     </article>
   );
 };

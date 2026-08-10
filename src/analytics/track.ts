@@ -1,5 +1,7 @@
 import type { AnalyticsEvent } from "./event";
 
 export function track(event: AnalyticsEvent) {
-  alert(`[Analytics] ${event}`);
+  alert(`[Analytics] 
+	[EventName]: ${event.name} 
+	[EventSource]: ${event.properties.source}`);
 }

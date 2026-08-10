@@ -1,3 +1,15 @@
+import type { AnalyticsSource } from "./sources";
+
 export type AnalyticsEvent =
-  | "stockflow_cta_clicked"
-  | "stockflow_github_clicked";
+  | {
+      name: "stockflow_cta_clicked";
+      properties: {
+        source: AnalyticsSource;
+      };
+    }
+  | {
+      name: "stockflow_github_clicked";
+      properties: {
+        source: AnalyticsSource;
+      };
+    };

@@ -1,7 +1,13 @@
 import styles from "./ProjectCTA.module.css";
 import { track } from "@/analytics/track";
 
-export function ProjectCTA() {
+import type { AnalyticsSource } from "@/analytics/sources";
+
+interface Props  {
+  source: AnalyticsSource;
+}
+	
+export function ProjectCTA(props: Props) {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
@@ -14,7 +20,12 @@ export function ProjectCTA() {
           e documentando cada etapa do desenvolvimento.
         </p>
 
-        <a href="/stockflow" className={styles.action} onClick={() => track("stockflow_cta_clicked")}>
+        <a href="/stockflow" className={styles.action} onClick={() => track({ 
+		name: "stockflow_cta_clicked",
+		properties: {
+		  source: props.source
+		}
+	})}>
           Acompanhar o projeto
           <span aria-hidden="true">→</span>
         </a>

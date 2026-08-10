@@ -19,7 +19,12 @@ export function StockFlowPage() {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.action}
-	  onClick={() => track("stockflow_github_clicked")}
+	  onClick={() => track({
+		  name: "stockflow_github_clicked",
+		  properties: {
+			source: "stockflow"
+		  }
+	  })}
         >
           Ver no GitHub
           <span aria-hidden="true">↗</span>

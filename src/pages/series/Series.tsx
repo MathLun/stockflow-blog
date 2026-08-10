@@ -12,6 +12,6 @@ export const SeriesPage = () => (
 	    </p>
 	  </header>
 	  <SeriesCard title="Building StockFlow" description="" href="/series/building-stockflow" articleCount={8} />
-	  <ProjectCTA />
+	  <ProjectCTA source="series" />
 	</section>
 );

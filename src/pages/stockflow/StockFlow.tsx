@@ -1,4 +1,5 @@
 import styles from "./StockFlow.module.css";
+import { track } from "@/analytics/track";
 
 export function StockFlowPage() {
   return (
@@ -18,6 +19,7 @@ export function StockFlowPage() {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.action}
+	  onClick={() => track("stockflow_github_clicked")}
         >
           Ver no GitHub
           <span aria-hidden="true">↗</span>

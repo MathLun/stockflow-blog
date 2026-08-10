@@ -1,4 +1,5 @@
 import styles from "./ProjectCTA.module.css";
+import { track } from "@/analytics/track";
 
 export function ProjectCTA() {
   return (
@@ -13,7 +14,7 @@ export function ProjectCTA() {
           e documentando cada etapa do desenvolvimento.
         </p>
 
-        <a href="/stockflow" className={styles.action}>
+        <a href="/stockflow" className={styles.action} onClick={() => track("stockflow_cta_clicked")}>
           Acompanhar o projeto
           <span aria-hidden="true">→</span>
         </a>

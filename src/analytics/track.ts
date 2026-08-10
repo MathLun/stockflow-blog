@@ -1,7 +1,9 @@
 import type { AnalyticsEvent } from "./event";
+import type { AnalyticsProvider } from "./providers/AnalyticsProvider";
+import { AlertAnalyticsProvider } from "./providers/AlertAnalyticsProvider";
+
+const provider: AnalyticsProvider = new AlertAnalyticsProvider();
 
 export function track(event: AnalyticsEvent) {
-  alert(`[Analytics] 
-	[EventName]: ${event.name} 
-	[EventSource]: ${event.properties.source}`);
+  provider.track(event);
 }

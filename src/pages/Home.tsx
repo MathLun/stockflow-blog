@@ -8,6 +8,9 @@ export const Home = () => (
 
 	  <p>Building StockFlow - Documentando a evolução do StockFlow</p>
 
+	  <button onClick={() => {
+		  throw new Error("Home Page - Sentry integration test");
+	  }}>Test Sentry</button>
 	  <ProjectCTA source="home" />
 	</section>
 

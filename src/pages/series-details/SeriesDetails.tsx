@@ -93,6 +93,7 @@ const SeriesDetailsPage = () => {
 	  ))}
 	</ul>
       </section>
+
     </section>
   );
 };

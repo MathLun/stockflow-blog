@@ -8,14 +8,16 @@ import {
 	Home, 
 	SeriesPage, 
 	SeriesDetailsPage,  
-	ArticleDetailsPage 
+	ArticleDetailsPage,
+	StockFlowPage
 } from '@/pages';
 
 const children = [
 	{ path: '/', element: <Home /> },
 	{ path: '/series', element: <SeriesPage /> },
 	{ path: '/series/:slug', element: <SeriesDetailsPage /> },
-	{ path: '/articles/:seriesSlug/:articleSlug', element: <ArticleDetailsPage />}
+	{ path: '/articles/:seriesSlug/:articleSlug', element: <ArticleDetailsPage /> },
+	{ path: '/stockflow', element: <StockFlowPage /> }
 ];
 
 const routes = [

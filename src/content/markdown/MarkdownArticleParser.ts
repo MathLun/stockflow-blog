@@ -2,16 +2,32 @@ import type { Article } from "@/../types/article";
 
 import type { MarkdownBlock, ParsedMarkdownArticle } from "./types";
 
+import type { MarkdownFrontMatterParser }
+from "./MarkdownFrontMatterParser";
+
 interface MarkdownArticleParserInput {
   article: Article;
   content: string;
+  frontMatterParser?: MarkdownFrontMatterParser
 }
 
 const MarkdownArticleParser = ({
   article,
   content,
+  frontMatterParser
 }: MarkdownArticleParserInput): ParsedMarkdownArticle => {
-  const lines = content.split(/\r?\n/);
+
+  let frontMatter;
+  let markdownContent = content;
+
+  if (frontMatterParser) {
+	  const parsed = frontMatterParser.parse(content);
+	  frontMatter = parsed.frontMatter;
+	  markdownContent = parsed.content;
+  }
+
+  const lines = markdownContent.split(/\r?\n/);
+  // const lines = content.split(/\r?\n/);
 
   const blocks: MarkdownBlock[] = [];
 
@@ -135,18 +151,11 @@ const MarkdownArticleParser = ({
     flushCodeBlock();
   }
 
-  const titleBlock = blocks.find(
-    (block) =>
-      block.type === "heading" &&
-      block.level === 1
-  );
-
+  
   const parsedArticle: Article = {
     ...article,
-    title:
-      titleBlock?.type === "heading"
-        ? titleBlock.content
-        : article.title,
+    title: frontMatter?.title ?? article.title,
+    slug: frontMatter?.slug ?? article.slug
   };
 
   return {

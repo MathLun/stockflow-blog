@@ -47,6 +47,7 @@ const StandaloneArticleDetailsPage = () => {
 
 	return (
 	  <article>
+	  <pre># {article.slug}</pre>
 
 	{blocks.map((block, index) => {
 		switch (block.type) {

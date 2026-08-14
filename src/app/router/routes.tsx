@@ -9,11 +9,13 @@ import {
 	SeriesPage, 
 	SeriesDetailsPage,  
 	ArticleDetailsPage,
+	StandaloneArticleDetailsPage,
 	StockFlowPage
 } from '@/pages';
 
 const children = [
 	{ path: '/', element: <Home /> },
+	{ path: '/:slug', element: <StandaloneArticleDetailsPage /> },
 	{ path: '/series', element: <SeriesPage /> },
 	{ path: '/series/:slug', element: <SeriesDetailsPage /> },
 	{ path: '/articles/:seriesSlug/:articleSlug', element: <ArticleDetailsPage /> },

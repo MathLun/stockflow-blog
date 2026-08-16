@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - chore/blog-ci
 
   pull_request:
     branches:
@@ -30,3 +31,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck

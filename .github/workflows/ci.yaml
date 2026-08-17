@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - chore/blog-ci
 
   pull_request:
     branches:

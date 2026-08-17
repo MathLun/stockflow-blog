@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
+import styles from "./StandaloneArticleDetails.module.css";
+
 import { LocalContentProvider }
 from '@/content/providers/LocalContentProvider'
 
@@ -57,6 +59,15 @@ const StandaloneArticleDetailsPage = () => {
 				  {block.content}
 				  </h2>
 			  );
+
+			case "image":
+			  return (
+				<img
+				  src={block.src}
+				  alt={block.alt}
+				  className={styles.imageBlock}
+				/>
+			);
 
 			case "paragraph":
 			  return (

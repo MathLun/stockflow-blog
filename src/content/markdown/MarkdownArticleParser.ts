@@ -107,7 +107,7 @@ const MarkdownArticleParser = ({
     const trimmedLine = line.trim();
 
     /* Reconhecimento de heading */
-    const headingMatch = line.match(
+    const headingMatch = trimmedLine.match(
       /^(#{1,3})\s+(.+)$/
     );
 
@@ -143,7 +143,7 @@ const MarkdownArticleParser = ({
     }
 
     /* Reconhecimento de Lista */
-    const listMatch = line.match(
+    const listMatch = trimmedLine.match(
       /^[-*]\s+(.+)$/
     );
 

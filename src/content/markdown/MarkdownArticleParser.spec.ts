@@ -317,7 +317,7 @@ console.log(name);`,
 
 it("should parse markdown image", () => {
   const article: Article = {
-	  id: "mass-assignment-laravel",
+	  id: 1,
 	  title: "Mass Assignment no Laravel",
 	  slug: "mass-assignment-laravel",
 	  path: "mass-assignment-laravel.md"
@@ -349,7 +349,7 @@ it("should parse markdown image without alt text", () => {
   ].join("\n");
 
   const article: Article = {
-    id: "mass-assignment-laravel",
+    id: 1,
     title: "Mass Assignment no Laravel",
     slug: "mass-assignment-laravel",
     path: "mass-assignment-laravel.md"
@@ -379,7 +379,7 @@ it("should parse image between paragraphs", () => {
   ].join("\n");
 
   const article: Article = {
-    id: "mass-assignment-laravel",
+    id: 1,
     title: "Mass Assignment no Laravel",
     slug: "mass-assignment-laravel",
     path: "mass-assignment-laravel.md"
@@ -413,7 +413,7 @@ it("should parse markdown image with surrounding spaces", () => {
   ].join("\n");
 
   const article: Article = {
-    id: "mass-assignment-laravel",
+    id: 1,
     title: "Mass Assignment no Laravel",
     slug: "mass-assignment-laravel",
     path: "mass-assignment-laravel.md"

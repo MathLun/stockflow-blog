@@ -27,7 +27,7 @@ class GithubContentProvider implements ContentProvider {
   async getArticles(seriesSlug: string): Promise<Article[]> {
 	  const contents = await this.getNestedContents(`docs/blog/${seriesSlug}`); 
 
-	  return contents.filter((content: any) => 
+	  return contents.filter((content) => 
 		   content.type === "file" &&
 		   content.name.endsWith(".md") &&
 		   content.name !== "README.md"
@@ -55,10 +55,10 @@ class GithubContentProvider implements ContentProvider {
   ): Promise<GithubContent[]> {
 	  const contents = await this.client.getContents(contentConfig.github.owner, contentConfig.github.repository, path);
 
-	  const nestedContents = await Promise.all(contents.filter((content: any) => content.type === "dir").map((directory: any) => this.getNestedContents(directory.path)));
+	  const nestedContents = await Promise.all(contents.filter((content) => content.type === "dir").map((directory) => this.getNestedContents(directory.path)));
 
 	  return [
-		...contents.filter((content: any) => content.type === "file"),
+		...contents.filter((content) => content.type === "file"),
 		...nestedContents.flat()
 	  ];
   }

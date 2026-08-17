@@ -39,7 +39,7 @@ const SeriesDetailsPage = () => {
 
 			const data = await contentProvider.getArticles(slug);
 			setArticles(data);
-		} catch (error) {
+		} catch {
 			setError("Não foi possivel carregar os artigos");
 		} finally {
 			setIsLoading(false);

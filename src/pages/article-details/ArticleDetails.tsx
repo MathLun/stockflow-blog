@@ -51,7 +51,7 @@ const ArticleDetailsPage = () => {
 
         setArticle(parsedArticle.article);
 	setBlocks(parsedArticle.blocks);
-      } catch (error) {
+      } catch {
         setError("Não foi possível carregar o artigo");
       } finally {
         setIsLoading(false);

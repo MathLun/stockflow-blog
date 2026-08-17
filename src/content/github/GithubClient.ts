@@ -1,3 +1,6 @@
+import type { GithubContent, GithubFileContent }
+from './types';
+
 const GITHUB_API_URL = "https://api.github.com";
 
 export class GithubClient {
@@ -5,21 +8,20 @@ export class GithubClient {
     owner: string,
     repository: string,
     path: string
-  ) {
-    const url =
-      `${GITHUB_API_URL}/repos/${owner}/${repository}/contents/${path}`;
+  ): Promise<GithubContent[]> {
+	const contents = await this.requestContents(
+      owner,
+      repository,
+      path
+    );
 
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      const errorBody = await response.text();
-
+    if (!Array.isArray(contents)) {
       throw new Error(
-        `GitHub API request failed: ${response.status} ${response.statusText} - ${errorBody}`
+        "GitHub content is a directory, not a file"
       );
     }
 
-    return response.json();
+    return contents;
   }
 
   async getFileContent(
@@ -27,7 +29,7 @@ export class GithubClient {
     repository: string,
     path: string
   ): Promise<string> {
-    const file = await this.getContents(
+    const file = await this.requestContents(
       owner,
       repository,
       path
@@ -58,5 +60,28 @@ export class GithubClient {
   );
 
   return new TextDecoder("utf-8").decode(bytes);
-}
+
+  }
+
+  private async requestContents(
+	owner: string,
+	repository: string,
+	path: string
+  ): Promise<GithubContent[] | GithubFileContent> {
+	const url =
+      `${GITHUB_API_URL}/repos/${owner}/${repository}/contents/${path}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+
+      throw new Error(
+        `GitHub API request failed: ${response.status} ${response.statusText} - ${errorBody}`
+      );
+    }
+
+    return response.json();
+
+  }
 }

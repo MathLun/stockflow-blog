@@ -29,6 +29,7 @@ const MarkdownArticleParser = ({
   const lines = markdownContent.split(/\r?\n/);
   // const lines = content.split(/\r?\n/);
 
+
   const blocks: MarkdownBlock[] = [];
 
   let paragraphLines: string[] = [];
@@ -50,7 +51,7 @@ const MarkdownArticleParser = ({
 
     paragraphLines = [];
   };
-
+ 
   const flushList = () => {
     if (listItems.length === 0) {
       return;
@@ -103,6 +104,9 @@ const MarkdownArticleParser = ({
       continue;
     }
 
+    const trimmedLine = line.trim();
+
+    /* Reconhecimento de heading */
     const headingMatch = line.match(
       /^(#{1,3})\s+(.+)$/
     );
@@ -120,6 +124,25 @@ const MarkdownArticleParser = ({
       continue;
     }
 
+    /* Reconhecimento de imagem */
+    const imageMatch = trimmedLine.match(
+	/^!\[([^\]]*)\]\(([^)]+)\)$/
+    );
+
+    if (imageMatch) {
+       flushParagraph();
+       flushList();
+
+       blocks.push({
+	type: "image",
+	alt: imageMatch[1].trim(),
+	src: imageMatch[2].trim()
+       });
+
+       continue;
+    }
+
+    /* Reconhecimento de Lista */
     const listMatch = line.match(
       /^[-*]\s+(.+)$/
     );

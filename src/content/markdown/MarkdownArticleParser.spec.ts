@@ -314,4 +314,122 @@ console.log(name);
 console.log(name);`,
   });
 });
+
+it("should parse markdown image", () => {
+  const article: Article = {
+	  id: "mass-assignment-laravel",
+	  title: "Mass Assignment no Laravel",
+	  slug: "mass-assignment-laravel",
+	  path: "mass-assignment-laravel.md"
+  };
+
+  const content = [
+	  "![Mass Assignment no Laravel](/images/mass-assignment-laravel.png)"
+  ].join("\n");
+
+  const parser = MarkdownArticleParser({
+	  article,
+	  content
+  });
+
+  const result = parser;
+
+  expect(result.blocks).toEqual([
+	  {
+	    type: "image",
+	    src: "/images/mass-assignment-laravel.png",
+	    alt: "Mass Assignment no Laravel"
+	  }
+  ]);
+});
+
+it("should parse markdown image without alt text", () => {
+  const content = [
+    "![](/images/mass-assignment-laravel.png)"
+  ].join("\n");
+
+  const article: Article = {
+    id: "mass-assignment-laravel",
+    title: "Mass Assignment no Laravel",
+    slug: "mass-assignment-laravel",
+    path: "mass-assignment-laravel.md"
+  };
+
+  const parser = MarkdownArticleParser({
+    article,
+    content
+  });
+
+  expect(parser.blocks).toEqual([
+    {
+      type: "image",
+      src: "/images/mass-assignment-laravel.png",
+      alt: ""
+    }
+  ]);
+});
+
+it("should parse image between paragraphs", () => {
+  const content = [
+    "Before the image.",
+    "",
+    "![Mass Assignment](/images/mass-assignment.png)",
+    "",
+    "After the image."
+  ].join("\n");
+
+  const article: Article = {
+    id: "mass-assignment-laravel",
+    title: "Mass Assignment no Laravel",
+    slug: "mass-assignment-laravel",
+    path: "mass-assignment-laravel.md"
+  };
+
+  const parser = MarkdownArticleParser({
+    article,
+    content,
+    frontMatterParser: undefined
+  });
+
+  expect(parser.blocks).toEqual([
+    {
+      type: "paragraph",
+      content: "Before the image."
+    },
+    {
+      type: "image",
+      src: "/images/mass-assignment.png",
+      alt: "Mass Assignment"
+    },
+    {
+      type: "paragraph",
+      content: "After the image."
+    }
+  ]);
+});
+it("should parse markdown image with surrounding spaces", () => {
+  const content = [
+    "  ![Mass Assignment](/images/mass-assignment.png)  "
+  ].join("\n");
+
+  const article: Article = {
+    id: "mass-assignment-laravel",
+    title: "Mass Assignment no Laravel",
+    slug: "mass-assignment-laravel",
+    path: "mass-assignment-laravel.md"
+  };
+
+  const parser = MarkdownArticleParser({
+    article,
+    content,
+  });
+
+  expect(parser.blocks).toEqual([
+    {
+      type: "image",
+      src: "/images/mass-assignment.png",
+      alt: "Mass Assignment"
+    }
+  ]);
+});
 });

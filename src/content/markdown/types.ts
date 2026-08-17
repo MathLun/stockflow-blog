@@ -16,6 +16,11 @@ export type MarkdownBlock =
       type: "code";
       language?: string;
       content: string;
+    }
+  | {
+      type: "image";
+      src: string;
+      alt: string;
     };
 
 /* ParsedMarkdownArticle */
